@@ -4,8 +4,8 @@ import java.util.*;
 
 import conference_room.models.Booking;
 
-public interface User {
-    User save(User user);
+public interface UserRepository {
+    UserRepository save(UserRepository user);
 
     List<Booking> getBookings();
 

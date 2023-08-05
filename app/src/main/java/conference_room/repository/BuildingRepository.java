@@ -2,8 +2,8 @@ package conference_room.repository;
 
 import conference_room.models.Room;
 
-public interface Building {
-    Building save(Building building);
+public interface BuildingRepository {
+    BuildingRepository save(BuildingRepository building);
 
     void addFloor(int floorNumber);
 

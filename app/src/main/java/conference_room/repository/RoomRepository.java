@@ -2,12 +2,15 @@ package conference_room.repository;
 
 import java.util.List;
 
+import conference_room.models.Booking;
+import conference_room.models.Room;
+
 public interface RoomRepository {
-    RoomRepository save(RoomRepository room);
+    Room save(Room room);
 
-    void addBooking(BookingRepository booking);
+    void addBooking(String roomId, Booking booking);
 
-    void removeBooking(BookingRepository booking);
+    void removeBooking(String roomId, Booking booking);
 
-    List<RoomRepository> getAvailableRooms(int start, int end);
+    List<Room> getAvailableRooms(int start, int end);
 }

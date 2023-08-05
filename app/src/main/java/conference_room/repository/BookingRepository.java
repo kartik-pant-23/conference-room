@@ -1,7 +1,9 @@
 package conference_room.repository;
 
-public interface BookingRepository {
-    BookingRepository save(BookingRepository booking);
+import conference_room.models.Booking;
 
-    void delete(BookingRepository booking);
+public interface BookingRepository {
+    Booking save(Booking booking);
+
+    void delete(Booking booking);
 }

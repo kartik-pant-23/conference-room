@@ -3,9 +3,10 @@ package conference_room.repository;
 import java.util.*;
 
 import conference_room.models.Booking;
+import conference_room.models.User;
 
 public interface UserRepository {
-    UserRepository save(UserRepository user);
+    User save(User user);
 
     List<Booking> getBookings();
 

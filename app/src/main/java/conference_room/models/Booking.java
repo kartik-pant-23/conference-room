@@ -4,14 +4,14 @@ import java.util.*;
 
 public class Booking {
     private String bookingId;
-    private int start, end;
+    private int startTime, endTime;
     private User user;
     private Room room;
 
     public Booking(int start, int end, User user, Room room) {
         this.bookingId = UUID.randomUUID().toString();
-        this.start = start;
-        this.end = end;
+        this.startTime = start;
+        this.endTime = end;
         this.user = user;
         this.room = room;
     }
@@ -20,12 +20,12 @@ public class Booking {
         return bookingId;
     }
 
-    public int getStart() {
-        return start;
+    public int getStartTime() {
+        return startTime;
     }
 
-    public int getEnd() {
-        return end;
+    public int getEndTime() {
+        return endTime;
     }
 
     public User getUser() {
@@ -36,8 +36,8 @@ public class Booking {
         return room;
     }
 
-    public boolean isOverlapping(Booking booking) {
-        if (start >= booking.end && end <= booking.start) {
+    public boolean isOverlapping(int startTime, int endTime) {
+        if (this.startTime >= endTime && this.endTime <= startTime) {
             return false;
         }
         return true;
@@ -46,7 +46,7 @@ public class Booking {
     @Override
     public String toString() {
         return new StringBuilder()
-                .append(start).append(":").append(end)
+                .append(startTime).append(":").append(endTime)
                 .append(" ").append(room.toString())
                 .toString();
     }

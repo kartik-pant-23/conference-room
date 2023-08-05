@@ -16,6 +16,10 @@ public class Building {
         return buildingId;
     }
 
+    public boolean hasFloor(int floorNumber) {
+        return floors.containsKey(floorNumber);
+    }
+
     public void addFloor(int floorNumber) {
         floors.put(floorNumber, new ArrayList<>());
     }

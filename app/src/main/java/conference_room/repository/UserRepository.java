@@ -8,7 +8,7 @@ import conference_room.models.User;
 public interface UserRepository {
     User save(User user);
 
-    List<Booking> getBookings();
+    Optional<User> getUserById(String userId);
 
     void removeBooking(Booking booking);
 }

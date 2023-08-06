@@ -11,9 +11,9 @@ public interface RoomRepository {
 
     Optional<Room> getRoom(String roomId, int floorNumber, String buildingId);
 
-    void addBooking(String roomId, Booking booking);
+    void addBooking(String roomId, int floorNumber, String buildingId, Booking booking);
 
-    void removeBooking(String roomId, Booking booking);
+    void removeBooking(String roomId, int floorNumber, String buildingId, Booking booking);
 
-    List<Room> getAvailableRooms(int start, int end);
+    List<Room> getAvailableRooms(int startTime, int endTime);
 }

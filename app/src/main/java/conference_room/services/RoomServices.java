@@ -41,7 +41,7 @@ public class RoomServices {
             }
             User user = userServices.getUser(userId);
             Booking newBooking = new Booking(startTime, endTime, user, room);
-            roomRepository.addBooking(roomId, newBooking);
+            roomRepository.addBooking(roomId, floorNumber, buildingId, newBooking);
         } catch (Exception e) {
             throw e;
         }

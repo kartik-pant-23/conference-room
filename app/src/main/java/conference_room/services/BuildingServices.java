@@ -29,7 +29,7 @@ public class BuildingServices {
             if (!isBuildingPresent(buildingId)) {
                 throw new Exception("Building with this id does not exist");
             }
-            buildingRepository.addFloor(floorNumber);
+            buildingRepository.addFloor(buildingId, floorNumber);
         } catch (Exception e) {
             throw e;
         }

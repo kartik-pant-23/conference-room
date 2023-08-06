@@ -21,7 +21,11 @@ public class Building {
     }
 
     public void addFloor(int floorNumber) {
-        floors.put(floorNumber, new ArrayList<>());
+        floors.putIfAbsent(floorNumber, new ArrayList<>());
+    }
+
+    public void addRoom(int floorNumber, Room room) {
+        floors.get(floorNumber).add(room);
     }
 
     public List<Room> getAllRooms() {

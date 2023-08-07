@@ -37,7 +37,7 @@ public class Booking {
     }
 
     public boolean isOverlapping(int startTime, int endTime) {
-        if (this.startTime >= endTime && this.endTime <= startTime) {
+        if (this.startTime >= endTime || this.endTime <= startTime) {
             return false;
         }
         return true;
@@ -45,9 +45,7 @@ public class Booking {
 
     @Override
     public String toString() {
-        return new StringBuilder()
-                .append(startTime).append(":").append(endTime)
-                .append(" ").append(room.toString())
-                .toString();
+        return "Booking [" + startTime + ":" + endTime + ", room=" + room + "]";
     }
+
 }

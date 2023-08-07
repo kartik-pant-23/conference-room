@@ -2,6 +2,7 @@ package conference_room.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Room {
     private String roomId;
@@ -33,16 +34,16 @@ public class Room {
     }
 
     public boolean isAvailable(int startTime, int endTime) {
-        return bookings.stream().anyMatch((booking) -> !booking.isOverlapping(startTime, endTime));
+        if (endTime - startTime > 12)
+            return false;
+        return bookings.stream().filter((booking) -> booking.isOverlapping(startTime, endTime))
+                .collect(Collectors.toList()).isEmpty();
     }
 
     @Override
     public String toString() {
-        return new StringBuilder()
-                .append(floorNumber)
-                .append(" ").append(buildingId)
-                .append(" ").append(roomId)
-                .toString();
+        return "Room [roomId=" + roomId + ", floorNumber=" + floorNumber + ", buildingId=" + buildingId + ", bookings="
+                + bookings.size() + "]";
     }
 
 }

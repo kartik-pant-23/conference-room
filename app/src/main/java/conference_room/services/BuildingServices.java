@@ -1,5 +1,7 @@
 package conference_room.services;
 
+import java.util.Optional;
+
 import conference_room.models.Building;
 import conference_room.models.Room;
 import conference_room.repository.BuildingRepository;
@@ -50,6 +52,14 @@ public class BuildingServices {
         } catch (Exception e) {
             throw e;
         }
+    }
+
+    public Building getBuilding(String buildingId) throws Exception {
+        Optional<Building> building = buildingRepository.getBuildingById(buildingId);
+        if (!building.isPresent()) {
+            throw new Exception("Requested building does not exist");
+        }
+        return building.get();
     }
 
     private boolean isBuildingPresent(String buildingId) {

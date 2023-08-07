@@ -1,5 +1,6 @@
 package conference_room.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import conference_room.models.Booking;
@@ -22,11 +23,14 @@ public class RoomServices {
 
     public Room addRoom(String roomId, int floorNumber, Building building) throws Exception {
         try {
-            Optional<Room> room = roomRepository.getRoom(roomId, floorNumber, roomId);
+            Optional<Room> room = roomRepository.getRoom(roomId, floorNumber, building.getId());
             if (room.isPresent()) {
                 throw new Exception("Requested room already exists");
             }
-            return roomRepository.save(new Room(roomId, floorNumber, roomId));
+            if (!building.hasFloor(floorNumber)) {
+                throw new Exception("Requested floor does not exist in the buildling");
+            }
+            return roomRepository.save(new Room(roomId, floorNumber, building.getId()));
         } catch (Exception e) {
             throw e;
         }
@@ -52,6 +56,14 @@ public class RoomServices {
             booking.getRoom().getBookings().remove(booking);
             booking.getUser().getBookings().remove(booking);
             bookingRepository.delete(booking);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public List<Room> getAvailableRooms(int startTime, int endTime) {
+        try {
+            return roomRepository.getAvailableRooms(startTime, endTime);
         } catch (Exception e) {
             throw e;
         }

@@ -31,4 +31,9 @@ public class Building {
     public List<Room> getAllRooms() {
         return floors.values().stream().flatMap(List::stream).collect(Collectors.toList());
     }
+
+    @Override
+    public String toString() {
+        return "Building [buildingId=" + buildingId + ", floors=" + floors.size() + "]";
+    }
 }

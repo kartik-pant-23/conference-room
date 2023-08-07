@@ -22,4 +22,10 @@ public class User {
     public void addBooking(Booking booking) {
         bookings.add(booking);
     }
+
+    @Override
+    public String toString() {
+        return "User [userId=" + userId + ", bookings=" + bookings.size() + "]";
+    }
+
 }
